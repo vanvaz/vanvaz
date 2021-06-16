@@ -1,0 +1,97 @@
+// Copyright 2004-present Facebook. All Rights Reserved.
+// _GENERATED_GRAPHQL_ Created by rebuild-graphql/build-omnistore-flatbuffer-schema
+// @generated SignedSource<<382fe9dd37696f9a0e84071e056c84f3>>
+// @nolint
+
+namespace com.facebook.messaging.rtc.meetups.speakeasy.omnistore.flatbuffer;
+
+table FBMessengerCallInviteLink_InterestedParticipants_Nodes {
+  name: string;
+  id: string;
+  __typename: string;
+}
+
+table FBMessengerCallInviteLink_InterestedParticipants {
+  nodes: [FBMessengerCallInviteLink_InterestedParticipants_Nodes];
+}
+
+table FBMessengerCallInviteLink_JoinableVideoChatAvailabilitySettings_WhitelistedParticipants_Nodes {
+  id: string;
+  name: string;
+}
+
+table FBMessengerCallInviteLink_JoinableVideoChatAvailabilitySettings_WhitelistedParticipants {
+  nodes: [FBMessengerCallInviteLink_JoinableVideoChatAvailabilitySettings_WhitelistedParticipants_Nodes];
+}
+
+table FBMessengerCallInviteLink_JoinableVideoChatAvailabilitySettings {
+  visibility_mode: string;
+  join_permission: string;
+  allow_anyone_with_link_to_join: bool;
+  whitelisted_participants: FBMessengerCallInviteLink_JoinableVideoChatAvailabilitySettings_WhitelistedParticipants;
+}
+
+table FBMDirectlyCallableUser {
+  id: string;
+  name: string;
+  short_name: string;
+  __typename: string;
+}
+
+table FBMessengerCallInviteLink_MessengerCallRoom_Calls_Nodes {
+  call_ended_time: long;
+}
+
+table FBMessengerCallInviteLink_MessengerCallRoom_Calls {
+  nodes: [FBMessengerCallInviteLink_MessengerCallRoom_Calls_Nodes];
+}
+
+table FBMCallUser_AboutMe {
+  text: string;
+  translation_type: string;
+}
+
+table FBMCallUser {
+  id: string;
+  name: string;
+  short_name: string;
+  about_me: FBMCallUser_AboutMe;
+}
+
+table FBMessengerCallInviteLink_MessengerCallRoom_MaybeStaleActiveCall {
+  active_participants: [FBMCallUser];
+}
+
+table FBMessengerCallInviteLink_MessengerCallRoom {
+  calls: FBMessengerCallInviteLink_MessengerCallRoom_Calls;
+  maybe_stale_active_call: FBMessengerCallInviteLink_MessengerCallRoom_MaybeStaleActiveCall;
+}
+
+table FBMessengerCallInviteLink {
+  id: string;
+  creation_time: long;
+  is_open: bool;
+  is_revoked: bool;
+  is_owner_in_call: bool;
+  emoji: string;
+  link_surface: string;
+  should_allow_guests: bool;
+  link_url: string;
+  link_hash: string;
+  expected_call_start_time: int;
+  active_call_participant_count: int;
+  name: string;
+  interested_participants: FBMessengerCallInviteLink_InterestedParticipants;
+  joinable_video_chat_availability_settings: FBMessengerCallInviteLink_JoinableVideoChatAvailabilitySettings;
+  link_owner: FBMDirectlyCallableUser;
+  messenger_call_room: FBMessengerCallInviteLink_MessengerCallRoom;
+  lock_status: string;
+  chat_mode: string;
+  is_screensharing_disabled: bool;
+  is_audio_only: bool;
+  is_e2e_encrypted: bool;
+}
+
+root_type FBMessengerCallInviteLink;
+
+file_identifier "FLAT";

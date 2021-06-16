@@ -1,0 +1,42 @@
+// Copyright 2004-present Facebook. All Rights Reserved.
+// _GENERATED_GRAPHQL_ Created by rebuild-graphql/build-omnistore-flatbuffer-schema
+// @generated SignedSource<<11b7034a8e3881a83f86963f614c13b7>>
+// @nolint
+
+namespace com.facebook.talk.beacons.omnistore.flatbuffer;
+
+table CoPresenceData_ActivityBeacons_Edges_Node_BeaconMedia {
+  __typename: string;
+  id: string;
+}
+
+table CoPresenceData_ActivityBeacons_Edges_Node_Effect {
+  id: string;
+}
+
+table CoPresenceData_ActivityBeacons_Edges_Node {
+  __typename: string;
+  id: string;
+  creation_time: long;
+  expiration_time: long;
+  seen_by_viewer: bool;
+  beacon_media: CoPresenceData_ActivityBeacons_Edges_Node_BeaconMedia;
+  effect: CoPresenceData_ActivityBeacons_Edges_Node_Effect;
+}
+
+table CoPresenceData_ActivityBeacons_Edges {
+  node: CoPresenceData_ActivityBeacons_Edges_Node;
+}
+
+table CoPresenceData_ActivityBeacons {
+  edges: [CoPresenceData_ActivityBeacons_Edges];
+}
+
+table CoPresenceData {
+  id: string;
+  activity_beacons: CoPresenceData_ActivityBeacons;
+}
+
+root_type CoPresenceData;
+
+file_identifier "FLAT";

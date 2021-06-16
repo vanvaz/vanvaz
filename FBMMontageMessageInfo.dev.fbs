@@ -1,0 +1,998 @@
+// Copyright 2004-present Facebook. All Rights Reserved.
+// _GENERATED_GRAPHQL_ Created by rebuild-graphql/build-omnistore-flatbuffer-schema
+// @generated SignedSource<<ef3da8eb00100d1d6e723999caf44c98>>
+// @nolint
+
+namespace com.facebook.messaging.montage.omnistore.flatbuffer;
+
+table FBMAttachmentImageInfo {
+  uri: string;
+  height: int;
+  width: int;
+}
+
+table FBMActor {
+  __typename: string;
+  id: string;
+  name: string;
+  profile_picture: FBMAttachmentImageInfo;
+  short_name: string;
+}
+
+table FBMMontageMessageInfo_BackdropImage {
+  uri: string;
+  width: int;
+  height: int;
+}
+
+enum MessageImageType : byte {
+  FILE_ATTACHMENT,
+  MESSENGER_CAM,
+  TRANSPARENT,
+}
+
+table FBMMontageBlobAttachment_BlobAttachment_OriginalDimensions {
+  x: float;
+  y: float;
+}
+
+enum MessageVideoType : byte {
+  FILE_ATTACHMENT,
+  RECORDED_VIDEO,
+  SPEAKING_STICKER,
+  RECORDED_STICKER,
+  VIDEO_MAIL,
+  IG_SELFIE_STICKER,
+}
+
+table FBMMontageBlobAttachment_BlobAttachment {
+  __typename: string;
+  legacy_attachment_id: string;
+  filename: string;
+  filesize: int;
+  mimetype: string;
+  original_dimensions: FBMMontageBlobAttachment_BlobAttachment_OriginalDimensions;
+  custom_animated_full_screen_image: FBMAttachmentImageInfo;
+  custom_animated_preview_image: FBMAttachmentImageInfo;
+  render_as_sticker: bool;
+  id: string;
+  image_type: MessageImageType;
+  custom_full_screen_image: FBMAttachmentImageInfo;
+  custom_preview_image: FBMAttachmentImageInfo;
+  custom_large_preview_image: FBMAttachmentImageInfo;
+  url: string;
+  dash_manifest: string;
+  video_type: MessageVideoType;
+  video_filesize: int;
+  playable_duration: int;
+  preview_thumbnail: FBMAttachmentImageInfo;
+  large_preview_thumbnail: FBMAttachmentImageInfo;
+}
+
+table FBMMontageMessageInfo_MontageAttribution_ImageRanges_EntityWithImage_Image {
+  name: string;
+}
+
+table FBMMontageMessageInfo_MontageAttribution_ImageRanges_EntityWithImage {
+  image: FBMMontageMessageInfo_MontageAttribution_ImageRanges_EntityWithImage_Image;
+  __typename: string;
+}
+
+table FBMMontageMessageInfo_MontageAttribution_ImageRanges {
+  offset: int;
+  length: int;
+  entity_with_image: FBMMontageMessageInfo_MontageAttribution_ImageRanges_EntityWithImage;
+}
+
+table FBMMontageMessageInfo_MontageAttribution_Ranges_Entity {
+  __typename: string;
+  url: string;
+}
+
+table FBMMontageMessageInfo_MontageAttribution_Ranges {
+  offset: int;
+  length: int;
+  entity: FBMMontageMessageInfo_MontageAttribution_Ranges_Entity;
+}
+
+table FBMMontageMessageInfo_MontageAttribution {
+  text: string;
+  ranges: [FBMMontageMessageInfo_MontageAttribution_Ranges];
+  image_ranges: [FBMMontageMessageInfo_MontageAttribution_ImageRanges];
+}
+
+table FBMMontageActor {
+  id: string;
+  name: string;
+  __typename: string;
+}
+
+table FBMMontageThreadBriefSummary_MontageOwner {
+  messaging_actor: FBMMontageActor;
+  actor: FBMActor;
+}
+
+table FBMMontageThreadBriefSummary {
+  page_num: int;
+  montage_thread_fbid: string;
+  montage_owner: FBMMontageThreadBriefSummary_MontageOwner;
+  montage_container_id: string;
+  inbox_score: float;
+  ranking_request_id: string;
+  is_my_montage_thread: bool;
+  integrity_score: float;
+  trusted_delivery_enabled: bool;
+}
+
+table FBMMessageEntPhoto_Fullview {
+  uri: string;
+  width: int;
+  height: int;
+}
+
+table FBMontageMedia_MontageMedia_LargePreview {
+  uri: string;
+  width: int;
+  height: int;
+}
+
+table FBMontageMedia_MontageMedia_Message {
+  text: string;
+}
+
+enum ObjectionableContentCategory : byte {
+  GRAPHIC,
+  OBJECTIONABLE,
+  HATE,
+  PROFANITY,
+  POLITICAL,
+  CHILD_ABUSE_NON_SEXUAL,
+  SENSITIVE,
+  CRUEL,
+  MATURE_ONLY_14_AND_OVER,
+  ANIMAL_VIOLENCE,
+  SENSITIVE_TEXT,
+  FALSE_NEWS,
+  FALSE_HEADLINE_NEWS,
+  MISLEADING_NEWS,
+  ALTERED_MEDIA,
+  MISSING_CONTEXT,
+  GOVERNMENT_CORRECTION,
+  CENSUS_MISINFO,
+  CENSUS_BORDERLINE,
+  COVID_ELECTION_BORDERLINE,
+  WIDELY_DEBUNKED_HOAX_COVID,
+  GENERIC_INFORM_TREATMENT,
+  NEWSWORTHY,
+  SELF_APPLIED_GRAPHIC_VIOLENCE,
+  CIVIC_VOTER_INFORM_TREATMENT,
+}
+
+table ObjectionableContentInfoFields_Strings {
+  blur_title: string;
+  uncover_media_link: string;
+}
+
+table ObjectionableContentInfoFields {
+  categories: [ObjectionableContentCategory];
+  strings: ObjectionableContentInfoFields_Strings;
+}
+
+table FBMontageMedia_MontageMedia_Preview {
+  uri: string;
+  width: int;
+  height: int;
+}
+
+table FBMontageMedia_MontageMedia {
+  __typename: string;
+  id: string;
+  preview: FBMontageMedia_MontageMedia_Preview;
+  large_preview: FBMontageMedia_MontageMedia_LargePreview;
+  fullview: FBMMessageEntPhoto_Fullview;
+  message: FBMontageMedia_MontageMedia_Message;
+  objectionable_content_info: ObjectionableContentInfoFields;
+  playable_duration_in_ms: int;
+  playable_url: string;
+  width: int;
+  height: int;
+  dash_manifest: string;
+}
+
+table FBMStoryActivityDescription_AggregatedRanges {
+  offset: int;
+  length: int;
+}
+
+table FBMStoryActivityDescription_ImageRanges_EntityWithImage_Image {
+  uri: string;
+  width: int;
+  height: int;
+  name: string;
+}
+
+table FBMStoryActivityDescription_ImageRanges_EntityWithImage {
+  image: FBMStoryActivityDescription_ImageRanges_EntityWithImage_Image;
+  __typename: string;
+}
+
+table FBMStoryActivityDescription_ImageRanges {
+  offset: int;
+  length: int;
+  entity_with_image: FBMStoryActivityDescription_ImageRanges_EntityWithImage;
+}
+
+table FBMStoryActivityDescription_Ranges_Entity {
+  __typename: string;
+  id: string;
+  url: string;
+}
+
+table FBMStoryActivityDescription_Ranges {
+  length: int;
+  offset: int;
+  entity: FBMStoryActivityDescription_Ranges_Entity;
+}
+
+table FBMStoryActivityDescription {
+  __typename: string;
+  text: string;
+  ranges: [FBMStoryActivityDescription_Ranges];
+  aggregated_ranges: [FBMStoryActivityDescription_AggregatedRanges];
+  image_ranges: [FBMStoryActivityDescription_ImageRanges];
+}
+
+table FBMStoryColorInfo_ColorInfo {
+  top_color: string;
+  bottom_color: string;
+  caption_font_color: string;
+  dominant_color: string;
+}
+
+table FBMStoryColorInfo {
+  color_info: [FBMStoryColorInfo_ColorInfo];
+}
+
+table FBMPostInlineActivity_AttachmentObject_ProfilePicture56 {
+  uri: string;
+}
+
+table FBMPostInlineActivity_AttachmentObject {
+  name: string;
+  category_name: string;
+  id: string;
+  profile_picture56: FBMPostInlineActivity_AttachmentObject_ProfilePicture56;
+  __typename: string;
+}
+
+table FBMPostInlineActivity_Object {
+  name: string;
+  __typename: string;
+}
+
+table FBMPostInlineActivity_TaggableActivity {
+  legacy_api_id: string;
+  present_participle: string;
+}
+
+table FBMPostInlineActivity_TaggableActivityIcon_Image16 {
+  uri: string;
+}
+
+table FBMPostInlineActivity_TaggableActivityIcon_Image56 {
+  uri: string;
+}
+
+table FBMPostInlineActivity_TaggableActivityIcon {
+  image16: FBMPostInlineActivity_TaggableActivityIcon_Image16;
+  image56: FBMPostInlineActivity_TaggableActivityIcon_Image56;
+}
+
+table FBMPostInlineActivity {
+  object: FBMPostInlineActivity_Object;
+  attachment_object: FBMPostInlineActivity_AttachmentObject;
+  taggable_activity: FBMPostInlineActivity_TaggableActivity;
+  taggable_activity_icon: FBMPostInlineActivity_TaggableActivityIcon;
+}
+
+table FBMMontageMessageMetadata_MontageMessageMetadata_InlineActivities {
+  nodes: [FBMPostInlineActivity];
+}
+
+table FBStoryLinkIntegrityContext {
+  integrity_context_identifier: string;
+  integrity_context_title: string;
+  integrity_context_extra_data: string;
+}
+
+table FBMStoryLinkAttachment_Description {
+  text: string;
+}
+
+table FBMStoryLinkAttachment_Media_Image {
+  width: int;
+  height: int;
+  uri: string;
+}
+
+table FBMStoryLinkAttachment_Media_MiniImage {
+  width: int;
+  height: int;
+  uri: string;
+}
+
+table FBMStoryLinkAttachment_Media {
+  id: string;
+  image: FBMStoryLinkAttachment_Media_Image;
+  playable_url: string;
+  miniImage: FBMStoryLinkAttachment_Media_MiniImage;
+  __typename: string;
+}
+
+table FBMStoryLinkAttachment_Source {
+  text: string;
+}
+
+table FBMStoryLinkAttachment_Target_InstantArticle {
+  id: string;
+}
+
+table FBMStoryLinkAttachment_Target {
+  instant_article: FBMStoryLinkAttachment_Target_InstantArticle;
+  __typename: string;
+}
+
+table FBMStoryLinkAttachment_TitleWithEntities {
+  text: string;
+}
+
+table FBMStoryLinkAttachment {
+  title_with_entities: FBMStoryLinkAttachment_TitleWithEntities;
+  description: FBMStoryLinkAttachment_Description;
+  source: FBMStoryLinkAttachment_Source;
+  target: FBMStoryLinkAttachment_Target;
+  url: string;
+  media: FBMStoryLinkAttachment_Media;
+  action_links: [FBStoryLinkIntegrityContext];
+}
+
+enum PostGradientDirection : byte {
+  BL_TR,
+  BOTTOM_TOP,
+  BR_TL,
+  LEFT_RIGHT,
+  TL_BR,
+  TOP_BOTTOM,
+  TR_BL,
+  RIGHT_LEFT,
+}
+
+table FBMStoryBackgroundInfo_Gradient_Style {
+  color: string;
+  position: float;
+}
+
+table FBMStoryBackgroundInfo_Gradient {
+  direction: PostGradientDirection;
+  style: [FBMStoryBackgroundInfo_Gradient_Style];
+}
+
+table FBMStoryBackgroundInfo {
+  color: string;
+  gradient: FBMStoryBackgroundInfo_Gradient;
+}
+
+table FBMontageTextFormatMetadata_BackgroundImage {
+  uri: string;
+}
+
+table FBMontageTextFormatMetadata_FontObject {
+  default_font_size: int;
+  font_name: string;
+  font_version: string;
+  resource_name: string;
+  url: string;
+}
+
+table FBMontageTextFormatMetadata_InspirationsCustomFontObject_FontDisplayName {
+  text: string;
+}
+
+table FBMontageTextFormatMetadata_InspirationsCustomFontObject {
+  id: string;
+  font_url: string;
+  font_name: string;
+  font_icon_url: string;
+  font_postscript_name: string;
+  maximum_font_size: int;
+  minimum_font_size: int;
+  font_display_name: FBMontageTextFormatMetadata_InspirationsCustomFontObject_FontDisplayName;
+}
+
+table FBMontageTextFormatMetadata_PortraitBackgroundImage {
+  uri: string;
+}
+
+table FBMontageTextFormatMetadata_PortraitKeyframesAnimation {
+  id: string;
+  name: string;
+  animation_uri: string;
+}
+
+table FBMontageTextFormatMetadata {
+  color: string;
+  background_color: string;
+  background_gradient_color: string;
+  background_gradient_direction: string;
+  background_image: FBMontageTextFormatMetadata_BackgroundImage;
+  background_image_name: string;
+  font_object: FBMontageTextFormatMetadata_FontObject;
+  font_style: string;
+  font_weight: string;
+  inspirations_custom_font_object: FBMontageTextFormatMetadata_InspirationsCustomFontObject;
+  preset_id: string;
+  portrait_background_image: FBMontageTextFormatMetadata_PortraitBackgroundImage;
+  portrait_keyframes_animation: FBMontageTextFormatMetadata_PortraitKeyframesAnimation;
+  text_align: string;
+}
+
+table FBMMontageMessageMetadata_MontageMessageMetadata {
+  text_format_metadata: FBMontageTextFormatMetadata;
+  share_story_attachments: [FBMStoryLinkAttachment];
+  story_default_background: FBMStoryBackgroundInfo;
+  background_color_info: FBMStoryColorInfo;
+  can_show_story_in_thread: bool;
+  activity_description: FBMStoryActivityDescription;
+  inline_activities: FBMMontageMessageMetadata_MontageMessageMetadata_InlineActivities;
+}
+
+table FBMMessageMontageReactions_MontageMessageReactions_Edges_Node_MessagingActions_Edges_Node {
+  reaction: string;
+  offset: int;
+  timestamp: long;
+}
+
+table FBMMessageMontageReactions_MontageMessageReactions_Edges_Node_MessagingActions_Edges {
+  node: FBMMessageMontageReactions_MontageMessageReactions_Edges_Node_MessagingActions_Edges_Node;
+}
+
+table FBMMessageMontageReactions_MontageMessageReactions_Edges_Node_MessagingActions {
+  edges: [FBMMessageMontageReactions_MontageMessageReactions_Edges_Node_MessagingActions_Edges];
+}
+
+table FBMMessageMontageReactions_MontageMessageReactions_Edges_Node {
+  messaging_actor: FBMMontageActor;
+  messaging_actions: FBMMessageMontageReactions_MontageMessageReactions_Edges_Node_MessagingActions;
+}
+
+table FBMMessageMontageReactions_MontageMessageReactions_Edges {
+  node: FBMMessageMontageReactions_MontageMessageReactions_Edges_Node;
+}
+
+table FBMMessageMontageReactions_MontageMessageReactions {
+  edges: [FBMMessageMontageReactions_MontageMessageReactions_Edges];
+}
+
+table FBMontageOriginalData_MontageOriginalData {
+  original_id: string;
+  creation_time: int;
+  creation_time_precise: string;
+}
+
+table FBMMontageResharedPostStickerFragment_AttachedStory {
+  cache_id: string;
+  id: string;
+  url: string;
+}
+
+enum StoryOverlayBloksStickerStyle : byte {
+  NONE,
+  ANTI_BULLY,
+  DONATE_BLOOD,
+  TAG,
+}
+
+table FBMMontageOverlayBounds {
+  x: float;
+  y: float;
+  width: float;
+  height: float;
+  rotation: float;
+}
+
+enum ConnectionStyle : byte {
+  RSVP,
+  INTERESTED,
+}
+
+table EventBasicInfoFragment_CoverPhoto_Photo_Image {
+  uri: string;
+}
+
+table EventBasicInfoFragment_CoverPhoto_Photo {
+  image: EventBasicInfoFragment_CoverPhoto_Photo_Image;
+}
+
+table EventBasicInfoFragment_CoverPhoto {
+  photo: EventBasicInfoFragment_CoverPhoto_Photo;
+}
+
+table EventBasicInfoFragment_EventPlace {
+  id: string;
+  contextual_name: string;
+  name: string;
+  __typename: string;
+}
+
+enum EventGuestStatus : byte {
+  HOST,
+  GOING,
+  INVITED,
+  MAYBE,
+  NOT_GOING,
+  LIKED,
+  SAVED,
+  SUBSCRIBED_ADMIN_CALENDAR,
+  SHARED_BUT_NOT_CONNECTED,
+  WAITLISTED,
+  UNKNOWN,
+}
+
+enum EventWatchStatus : byte {
+  WATCHED,
+  UNWATCHED,
+  GOING,
+  DECLINED,
+}
+
+table EventBasicInfoFragment {
+  id: string;
+  name: string;
+  day_time_sentence: string;
+  cover_photo: EventBasicInfoFragment_CoverPhoto;
+  event_place: EventBasicInfoFragment_EventPlace;
+  connection_style: ConnectionStyle;
+  can_viewer_change_guest_status: bool;
+  can_viewer_change_child_watch_status: bool;
+  viewer_watch_status: EventWatchStatus;
+  viewer_guest_status: EventGuestStatus;
+}
+
+table StoryCardEventsStickerResult_EventInfoBar_ResponsesToEvent_Responders_Nodes {
+  id: string;
+  name: string;
+}
+
+table StoryCardEventsStickerResult_EventInfoBar_ResponsesToEvent_Responders {
+  count: int;
+  nodes: [StoryCardEventsStickerResult_EventInfoBar_ResponsesToEvent_Responders_Nodes];
+}
+
+enum EventInStoriesResponseType : byte {
+  GOING,
+  INTERESTED,
+  GET_TICKETS,
+}
+
+table StoryCardEventsStickerResult_EventInfoBar_ResponsesToEvent {
+  response: EventInStoriesResponseType;
+  responders: StoryCardEventsStickerResult_EventInfoBar_ResponsesToEvent_Responders;
+}
+
+table StoryCardEventsStickerResult_EventInfoBar {
+  id: string;
+  responses_to_event: [StoryCardEventsStickerResult_EventInfoBar_ResponsesToEvent];
+}
+
+enum StoryOverlayEventInfoBarStyle : byte {
+  NO_CTA,
+  INTERESTED,
+  TICKETS,
+}
+
+table MontageFundraiserStickerFragment_Fundraiser_Beneficiary_ProfilePicture {
+  uri: string;
+}
+
+table MontageFundraiserStickerFragment_Fundraiser_Beneficiary {
+  profile_picture: MontageFundraiserStickerFragment_Fundraiser_Beneficiary_ProfilePicture;
+  __typename: string;
+}
+
+table MontageFundraiserStickerFragment_Fundraiser_FundraiserProgressText {
+  text: string;
+}
+
+table MontageFundraiserStickerFragment_Fundraiser {
+  campaign_title: string;
+  beneficiary: MontageFundraiserStickerFragment_Fundraiser_Beneficiary;
+  percent_of_goal_reached: float;
+  fundraiser_progress_text: MontageFundraiserStickerFragment_Fundraiser_FundraiserProgressText;
+  __typename: string;
+}
+
+enum StoryOverlayFundraiserStyle : byte {
+  CHERRY,
+  WHITE,
+  BLACK,
+}
+
+table FBMMontageLinkStickerFragment_LinkPreview_StoryAttachment_ActionLinks {
+  object_id: string;
+  integrity_context_title: string;
+  integrity_context_identifier: string;
+  __typename: string;
+}
+
+table FBMMontageLinkStickerFragment_LinkPreview_StoryAttachment {
+  url: string;
+  action_links: [FBMMontageLinkStickerFragment_LinkPreview_StoryAttachment_ActionLinks];
+}
+
+table FBMMontageLinkStickerFragment_LinkPreview {
+  story_attachment: FBMMontageLinkStickerFragment_LinkPreview_StoryAttachment;
+}
+
+enum StoryOverlayLinkStickerStyle : byte {
+  URL_ONLY,
+  TEXT,
+  TEXT_WITH_IMAGE,
+  NF_RESHARE_TEXT_WITH_IMAGE,
+  IG_FEED_URL,
+  IG_PROFILE_URL,
+  HASHTAG,
+  DEEPLINK,
+}
+
+table MontageMusicStickerFragment_MusicSticker {
+  id: string;
+  album_title: string;
+  cover_artwork_url: string;
+  is_explicit: bool;
+  music_sticker_style: int;
+  song_title: string;
+  scale_factor: float;
+  xplat_sticker_style: int;
+  should_use_xplat_style: bool;
+  artist_page_url: string;
+  song_id: string;
+}
+
+table FBMMontagePollStickerFragment_Poll_PollOptions_Voters_Nodes {
+  id: string;
+}
+
+table FBMMontagePollStickerFragment_Poll_PollOptions_Voters {
+  nodes: [FBMMontagePollStickerFragment_Poll_PollOptions_Voters_Nodes];
+}
+
+table FBMMontagePollStickerFragment_Poll_PollOptions {
+  index: int;
+  text: string;
+  vote_count: int;
+  reshare_vote_count: int;
+  voters: FBMMontagePollStickerFragment_Poll_PollOptions_Voters;
+}
+
+table FBMMontagePollStickerFragment_Poll {
+  id: string;
+  can_viewer_vote: bool;
+  viewer_vote_index: int;
+  url: string;
+  poll_options: [FBMMontagePollStickerFragment_Poll_PollOptions];
+}
+
+table MontageTagStickerFragment_Profile {
+  id: string;
+  name: string;
+  __typename: string;
+}
+
+table FBMMontageOverlays_MontageOverlays_QuestionText {
+  text: string;
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker_StickerAsset_StickerAnimationAssets_Asset {
+  id: string;
+  initial_state_bounds: FBMMontageOverlayBounds;
+  keyframe_uri: string;
+}
+
+enum InspirationsAnimationAssetType : byte {
+  AFFORDANCE,
+  MAIN,
+  PRESS_AND_HOLD,
+  PRESS_AND_HOLD_FX,
+  TAP,
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker_StickerAsset_StickerAnimationAssets {
+  type: InspirationsAnimationAssetType;
+  asset: FBMMontageReactionStickerFragment_ReactionSticker_StickerAsset_StickerAnimationAssets_Asset;
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker_StickerAsset {
+  id: string;
+  image_asset_url: string;
+  sticker_animation_assets: [FBMMontageReactionStickerFragment_ReactionSticker_StickerAsset_StickerAnimationAssets];
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker_StickerReactions_Nodes_Reactor {
+  id: string;
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker_StickerReactions_Nodes {
+  reaction_count: int;
+  reactor: FBMMontageReactionStickerFragment_ReactionSticker_StickerReactions_Nodes_Reactor;
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker_StickerReactions {
+  nodes: [FBMMontageReactionStickerFragment_ReactionSticker_StickerReactions_Nodes];
+}
+
+table FBMMontageReactionStickerFragment_ReactionSticker {
+  id: string;
+  sticker_reactions: FBMMontageReactionStickerFragment_ReactionSticker_StickerReactions;
+  sticker_asset: FBMMontageReactionStickerFragment_ReactionSticker_StickerAsset;
+}
+
+table StoryCardSliderPoll {
+  id: string;
+  can_viewer_vote: bool;
+  viewer_vote: float;
+  slider_vote_count: int;
+  slider_vote_average: float;
+}
+
+enum StoryOverlaySliderStyle : byte {
+  IG_SLIDER,
+}
+
+enum StoryOverlayEventStickerVersion : byte {
+  ONE,
+  TWO,
+}
+
+table FBMMontageResharedContentStickerFragment_Story_Actors {
+  __typename: string;
+  id: string;
+  name: string;
+}
+
+table FBMMontageResharedContentStickerFragment_Story_StoryCardInfo_Bucket {
+  id: string;
+}
+
+enum StoryCardTypes : byte {
+  ADD_TO_STORY,
+  ADMINED_ADDITIONAL_PROFILE_STORY,
+  ARCHIVED_STORY,
+  BIRTHDAY_GENERATED_STORY,
+  BIRTHDAY_STORY,
+  BIRTHDAY_WALLPOST_GENERATED_STORY,
+  BUCKET_FEEDBACK_STORY,
+  CHANNEL_BUCKET,
+  CHANNEL_GENERATED_STORY,
+  CHANNEL_STORY,
+  CREW_STORY,
+  DEPTH_PLAYGROUND_GENERATED_STORY,
+  DIRECT,
+  DIRECT_NUX,
+  DUMMY_SELF_BUCKET,
+  EVENT_STORY,
+  FRIEND_GROUP_STORY,
+  GEMSTONE_STORY,
+  GOODWILL_GENERATED_STORY,
+  GOODWILL_STORY,
+  GROUP_DIRECT,
+  GROUP_STORY,
+  HASHTAG_GENERATED_STORY,
+  HASHTAG_STORY,
+  HIGHLIGHTED_STORY,
+  IMBE_STORY,
+  LIVE_STORY,
+  LOCKED_PROFILE_COMPREHENSION_MID_CARD,
+  LOL_DAILY_DROP_STORY,
+  MULTI_AUTHOR_GENERATED_STORY,
+  MULTI_AUTHOR_STORY,
+  M_GROUP_STORY,
+  NATIVE_TEMPLATES_GENERATED_STORY,
+  NULL_HEADS,
+  NULL_STATE_STORY,
+  OPTIMISTIC_STORY,
+  PAGE_GENERATED_STORY,
+  PAGE_INSIGHTS_STORY,
+  PAGE_STORY,
+  PROFILE_PLUS_STORY,
+  PROMOTION_GENERATED_STORY,
+  PROMOTION_STORY,
+  PYMK_GENERATED_STORY,
+  QUICK_PROMOTION_STORY_VIEWER_ONLY_STORY,
+  REPLY_STORY,
+  SCHOOL_COMMUNITY_STORY,
+  SELF_BIRTHDAY_STORY,
+  SHARED_ADMINED_ADDITIONAL_PROFILE_STORY,
+  SHARED_CHANNEL_STORY,
+  SHARED_PAGE_STORY,
+  SHARED_PROFILE_PLUS_STORY,
+  SHARED_REPLY_STORY,
+  SHARED_USER_STORY,
+  STORIES_READER_MID_CARD_UPSELL,
+  STORIES_READER_POG_UPSELL,
+  STORY,
+  STORY_NUX,
+  STORY_VIEWER_ONLY_GENERATED_STORY,
+  TOPIC_STORY,
+  UNKNOWN,
+  WAS_LIVE,
+}
+
+table FBMMontageResharedContentStickerFragment_Story_StoryCardInfo {
+  bucket: FBMMontageResharedContentStickerFragment_Story_StoryCardInfo_Bucket;
+  story_card_type: StoryCardTypes;
+}
+
+table FBMMontageResharedContentStickerFragment_Story {
+  id: string;
+  story_card_info: FBMMontageResharedContentStickerFragment_Story_StoryCardInfo;
+  actors: [FBMMontageResharedContentStickerFragment_Story_Actors];
+}
+
+enum StoryOverlayPollStyle : byte {
+  TWO_OPTION_COMBINED,
+  IG_TWO_OPTION_COMBINED,
+  FIVE_OPTION_STAR_RATING,
+  TWO_OPTION_COMBINED_V2,
+}
+
+enum StoryOverlayTagType : byte {
+  LOCATION,
+  PEOPLE,
+  EVENT,
+  RESHARED_POST,
+  RESHARED_CONTENT,
+  PAGE,
+  FUNDRAISER,
+  PRODUCT,
+  ANTI_BULLY,
+  INSTAGRAM,
+  MENTION,
+}
+
+table StoryCardSliderStickerResult_Votes_Nodes_Person {
+  id: string;
+  name: string;
+}
+
+table StoryCardSliderStickerResult_Votes_Nodes {
+  vote: float;
+  person: StoryCardSliderStickerResult_Votes_Nodes_Person;
+}
+
+table StoryCardSliderStickerResult_Votes {
+  nodes: [StoryCardSliderStickerResult_Votes_Nodes];
+}
+
+table FBMMontageOverlays_MontageOverlays {
+  bounds: FBMMontageOverlayBounds;
+  bloks_sticker_style: StoryOverlayBloksStickerStyle;
+  bloks_payload: string;
+  __typename: string;
+  link_preview: FBMMontageLinkStickerFragment_LinkPreview;
+  link_sticker_url: string;
+  link_sticker_style: StoryOverlayLinkStickerStyle;
+  question_text: FBMMontageOverlays_MontageOverlays_QuestionText;
+  style: StoryOverlayPollStyle;
+  is_reshared_overlay: bool;
+  poll: FBMMontagePollStickerFragment_Poll;
+  voting_control_bounds: FBMMontageOverlayBounds;
+  reaction_sticker: FBMMontageReactionStickerFragment_ReactionSticker;
+  deeplink_url: string;
+  content_action_title: string;
+  messenger_content_id: string;
+  story: FBMMontageResharedContentStickerFragment_Story;
+  action_title: string;
+  attached_story: FBMMontageResharedPostStickerFragment_AttachedStory;
+  event_info_bar_style: StoryOverlayEventInfoBarStyle;
+  event: EventBasicInfoFragment;
+  sticker_bounds: FBMMontageOverlayBounds;
+  sticker_version: StoryOverlayEventStickerVersion;
+  gradient_color: string;
+  event_info_bar: StoryCardEventsStickerResult_EventInfoBar;
+  event_id: string;
+  id: string;
+  fundraiser_id: string;
+  fundraiser_sticker_version: int;
+  fundraiser_sticker_style: StoryOverlayFundraiserStyle;
+  fundraiser_creation_source: string;
+  fundraiser: MontageFundraiserStickerFragment_Fundraiser;
+  music_sticker: MontageMusicStickerFragment_MusicSticker;
+  background_color: string;
+  emoji: string;
+  question_text_color: string;
+  slider_poll: StoryCardSliderPoll;
+  slider_style: StoryOverlaySliderStyle;
+  votes: StoryCardSliderStickerResult_Votes;
+  profile: MontageTagStickerFragment_Profile;
+  tag_id: string;
+  type: StoryOverlayTagType;
+}
+
+table FBMMontageStoryMedia_MontageStoryMedia_Fullview {
+  uri: string;
+  width: int;
+  height: int;
+  mime_type: string;
+}
+
+table FBMMontageStoryMedia_MontageStoryMedia_LargePreview {
+  uri: string;
+  width: int;
+  height: int;
+}
+
+table FBMMontageStoryMedia_MontageStoryMedia_Preview {
+  uri: string;
+  width: int;
+  height: int;
+}
+
+table FBMMontageStoryMedia_MontageStoryMedia {
+  id: string;
+  preview: FBMMontageStoryMedia_MontageStoryMedia_Preview;
+  large_preview: FBMMontageStoryMedia_MontageStoryMedia_LargePreview;
+  fullview: FBMMontageStoryMedia_MontageStoryMedia_Fullview;
+  playable_duration_in_ms: int;
+  playable_url: string;
+  __typename: string;
+}
+
+enum MontageReshareIntent : byte {
+  MENTION,
+  SHARE_STORY,
+}
+
+table FBMMontageMessageInfo_SmartFeatures {
+  name: string;
+  value: float;
+}
+
+table FBMMontageMessageInfo_Sticker {
+  id: string;
+}
+
+table FBMMontageMessageInfo {
+  id: string;
+  actor: FBMActor;
+  montage_container: FBMMontageThreadBriefSummary;
+  offline_threading_id: string;
+  timestamp_precise: string;
+  ttl: int;
+  message_source: string;
+  message_body: string;
+  sticker: FBMMontageMessageInfo_Sticker;
+  is_unread: bool;
+  montage_type: string;
+  montage_attribution: FBMMontageMessageInfo_MontageAttribution;
+  id_encoded: string;
+  can_reply: bool;
+  reshare_intents: [MontageReshareIntent];
+  is_reshareable: bool;
+  perma_link: string;
+  can_mute: bool;
+  can_report: bool;
+  backdrop_image: FBMMontageMessageInfo_BackdropImage;
+  smart_features: [FBMMontageMessageInfo_SmartFeatures];
+  feed_encoded_id: string;
+  montage_message_reactions: FBMMessageMontageReactions_MontageMessageReactions;
+  blob_attachment: FBMMontageBlobAttachment_BlobAttachment;
+  montage_message_metadata: FBMMontageMessageMetadata_MontageMessageMetadata;
+  montage_overlays: [FBMMontageOverlays_MontageOverlays];
+  montage_story_media: FBMMontageStoryMedia_MontageStoryMedia;
+  montage_media: FBMontageMedia_MontageMedia;
+  montage_original_data: FBMontageOriginalData_MontageOriginalData;
+}
+
+root_type FBMMontageMessageInfo;
+
+file_identifier "FLAT";
